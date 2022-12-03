@@ -20,13 +20,17 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+import ftd.com.challenge.ui.datarepository.service.impl.URLAccessDataRepository;
+
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
 public class WebUiApplication {
 
 	public static void main(String[] args) throws Exception {
-		System.out.println("Hello world");
+		// TODO remove
+		System.out.println("====> start");
+		new URLAccessDataRepository().getData();
 	}
 
 }
