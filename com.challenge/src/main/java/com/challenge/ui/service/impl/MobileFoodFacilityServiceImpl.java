@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 import com.challenge.ui.datarepository.dao.MobileFoodFacilityDataObject;
 import com.challenge.ui.datarepository.service.impl.URLAccessDataRepository;
 
+/**
+ * @author Forrest Dai
+ */
 @Service("com.challenge.ui.service.impl.MobileFoodFacilityServiceImpl")
 public class MobileFoodFacilityServiceImpl {
 	
@@ -16,7 +19,7 @@ public class MobileFoodFacilityServiceImpl {
 	 * @param facilityType
 	 * @return
 	 */
-	public List<MobileFoodFacilityDataObject> getMobileFoodFacilityByFacilityType(String facilityType) {
+	public Iterable<MobileFoodFacilityDataObject> getMobileFoodFacilityByFacilityType(String facilityType) {
 		// Retrieve data
 		URLAccessDataRepository dataRep = new URLAccessDataRepository();
 		List<MobileFoodFacilityDataObject> fList = 
