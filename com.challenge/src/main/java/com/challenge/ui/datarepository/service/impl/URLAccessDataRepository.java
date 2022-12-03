@@ -1,4 +1,4 @@
-package ftd.com.challenge.ui.datarepository.service.impl;
+package com.challenge.ui.datarepository.service.impl;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,16 +13,15 @@ import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.challenge.ui.datarepository.api.IDataAccessable;
+import com.challenge.ui.datarepository.dao.MobileFoodFacilityDataObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import ftd.com.challenge.ui.datarepository.api.IDataRepository;
-import ftd.com.challenge.ui.datarepository.dao.MobileFoodFacilityDataObject;
 
 
 /**
  * @author Forrest Dai
  */
-public class URLAccessDataRepository implements IDataRepository {
+public class URLAccessDataRepository implements IDataAccessable {
 
 	private static final Logger logger = LoggerFactory.getLogger(URLAccessDataRepository.class);
 	

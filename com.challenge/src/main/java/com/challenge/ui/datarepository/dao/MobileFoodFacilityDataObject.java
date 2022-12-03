@@ -11,25 +11,16 @@
  * specific language governing permissions and limitations under the License.
  */
 
-package ftd.com.challenge.ui.datarepository.dao;
+package com.challenge.ui.datarepository.dao;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
-import lombok.Value;
-
 /**
  * @author Forrest Dai
  */
-@Builder
-@Value
-@AllArgsConstructor
-@NoArgsConstructor
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MobileFoodFacilityDataObject {
 
@@ -90,4 +81,10 @@ public class MobileFoodFacilityDataObject {
 
 	@JsonProperty("expirationdate")
 	private String expirationDate;
+	
+	public String getFacilityType() {
+		return this.facilityType;
+	}
+	
+	/* TODO add setter and getter */
 }

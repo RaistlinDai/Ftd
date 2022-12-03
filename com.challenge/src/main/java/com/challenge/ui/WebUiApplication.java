@@ -14,13 +14,13 @@
  * limitations under the License.
  */
 
-package ftd.com.challenge.ui;
+package com.challenge.ui;
 
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-import ftd.com.challenge.ui.datarepository.service.impl.URLAccessDataRepository;
+import com.challenge.ui.datarepository.service.impl.URLAccessDataRepository;
 
 /**
  * @author Forrest Dai
