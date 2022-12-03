@@ -15,39 +15,79 @@ package ftd.com.challenge.ui.datarepository.dao;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.Value;
+
 /**
  * @author Forrest Dai
  */
+@Builder
+@Value
+@AllArgsConstructor
+@NoArgsConstructor
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MobileFoodFacilityDataObject {
 
-	@NotEmpty(message = "Location ID is required.")
-	private Long locationid;
+	@NotEmpty(message = "Object ID is required.")
+	@JsonProperty("objectid")
+	private Long objectId;
 
+	@JsonProperty("applicant")
 	private String applicant;
 
+	@JsonProperty("facilitytype")
 	private String facilityType;
 
-	public Long getLocationid() {
-		return this.locationid;
-	}
+	@JsonProperty("cnn")
+	private String cnn;
 
-	public void setLocationid(Long locationid) {
-		this.locationid = locationid;
-	}
+	@JsonProperty("locationdescription")
+	private String locationDescription;
 
-	public String getApplicant() {
-		return this.applicant;
-	}
+	@JsonProperty("address")
+	private String address;
 
-	public void setApplicant(String applicant) {
-		this.applicant = applicant;
-	}
+	@JsonProperty("blocklot")
+	private String blocklot;
 
-	public String getFacilityType() {
-		return this.facilityType;
-	}
+	@JsonProperty("block")
+	private String block;
 
-	public void setFacilityType(String facilityType) {
-		this.facilityType = facilityType;
-	}
+	@JsonProperty("lot")
+	private String lot;
+
+	@JsonProperty("permit")
+	private String permit;
+
+	@JsonProperty("status")
+	private String status;
+
+	@JsonProperty("x")
+	private double posX;
+
+	@JsonProperty("y")
+	private double posY;
+
+	@JsonProperty("latitude")
+	private double latitude;
+
+	@JsonProperty("longitude")
+	private double longitude;
+
+	@JsonProperty("schedule")
+	private String schedule;
+
+	@JsonProperty("received")
+	private String received;
+
+	@JsonProperty("priorpermit")
+	private String priorPermit;
+
+	@JsonProperty("expirationdate")
+	private String expirationDate;
 }

@@ -22,6 +22,9 @@ import org.springframework.context.annotation.Configuration;
 
 import ftd.com.challenge.ui.datarepository.service.impl.URLAccessDataRepository;
 
+/**
+ * @author Forrest Dai
+ */
 @Configuration
 @EnableAutoConfiguration
 @ComponentScan
