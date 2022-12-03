@@ -1,6 +1,7 @@
 
 com.challenge/.classpath
 com.challenge/.project
-*.prefs
-*.prefs
+com.challenge/.settings
+com.challenge/.classpath
+com.challenge/.project
 *.class
