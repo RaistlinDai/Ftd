@@ -17,7 +17,6 @@ import com.challenge.ui.datarepository.api.IDataAccessable;
 import com.challenge.ui.datarepository.dao.MobileFoodFacilityDataObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
 /**
  * @author Forrest Dai
  */

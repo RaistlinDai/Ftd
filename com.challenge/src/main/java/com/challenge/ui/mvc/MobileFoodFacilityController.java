@@ -17,6 +17,8 @@ import java.util.ArrayList;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +39,7 @@ import com.challenge.ui.service.impl.MobileFoodFacilityServiceImpl;
 @RequestMapping("/")
 public class MobileFoodFacilityController {
 	public static final java.lang.String APPLICATION_JSON_VALUE = "application/json";
+	private static final Logger logger = LoggerFactory.getLogger(MobileFoodFacilityController.class);
 	
 	private final MobileFoodFacilityServiceImpl mobileFoodFacilityServiceImpl;
 
@@ -47,6 +50,8 @@ public class MobileFoodFacilityController {
 
 	@RequestMapping
 	public ModelAndView viewList(Model model) {
+		logger.info("viewList invoke");
+		
 		Iterable<MobileFoodFacilityDataObject> facilities = new ArrayList<MobileFoodFacilityDataObject>();
 	    model.addAttribute("filter", new MobileFoodFacilityFilterDataObject()); 
 		return new ModelAndView("facilities/list", "facilities", facilities);
@@ -54,6 +59,8 @@ public class MobileFoodFacilityController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView getList(Model model, @Valid MobileFoodFacilityFilterDataObject filter, BindingResult result, RedirectAttributes redirect) {
+		logger.info("getList invoke");
+		
 		if (result.hasErrors()) {
 			return new ModelAndView("facilities/list", "formErrors", result.getAllErrors());
 		}
