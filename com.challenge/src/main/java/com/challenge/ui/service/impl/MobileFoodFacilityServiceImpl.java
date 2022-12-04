@@ -28,8 +28,10 @@ public class MobileFoodFacilityServiceImpl {
 		
 		// Retrieve data
 		URLAccessDataRepository dataRep = new URLAccessDataRepository();
-		List<MobileFoodFacilityDataObject> fList = 
-				dataRep.getData().stream().filter(row -> row.getFacilityType().equals(facilityType)).
+		List<MobileFoodFacilityDataObject> fList = dataRep.getData();
+		assert(facilityType != null);
+		assert(fList != null);
+		fList = fList.stream().filter(row -> facilityType.equalsIgnoreCase(row.getFacilityType())).
 				collect(Collectors.toList());
 		return fList;
 	}

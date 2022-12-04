@@ -24,7 +24,7 @@ public class URLAccessDataRepository implements IDataAccessable {
 
 	private static final Logger logger = LoggerFactory.getLogger(URLAccessDataRepository.class);
 	
-	private static final String HTTP_URL = "https://data.sfgov.org/api/id/rqzj-sfat.json?$query=select*%2C%20%3Aid%20limit%20100";
+	private static final String HTTP_URL = "https://data.sfgov.org/api/id/rqzj-sfat.json";
 	
 	@Override
 	public List<MobileFoodFacilityDataObject> getData() {
