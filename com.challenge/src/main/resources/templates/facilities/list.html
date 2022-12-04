@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+  layout:decorator="layout">
+  <head>
+    <title>Mobile Food Facility : View all</title>
+  </head>
+  <body>
+    <h1 layout:fragment="header">Mobile Food Facility : View all</h1>
+    <div layout:fragment="content" class="container">
+      <div class="pull-left">
+        <form id="filterForm"
+          th:action="@{/(form)}"
+          th:object="${filter}"
+          action="#"
+          method="post">
+          <label for="text">Facility Type</label>
+          <textarea th:field="*{facilityType}" 
+          			th:class="${#fields.hasErrors('facilityType')} ? 'field-error'"></textarea>
+          <div class="form-actions">
+            <input type="submit" value="Search"/>
+          </div>
+        </form>
+      </div>
+      <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <td>Applicant</td>
+            <td>Address</td>
+            <td>Blocklot</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:if="${facilities.empty}">
+            <td colspan="3">
+              No records
+            </td>
+          </tr>
+          <tr th:each="obj : ${facilities}">
+            <td th:text="${obj.applicant}">mockup</td>
+            <td th:text="${obj.address}">mockup</td>
+            <td th:text="${obj.blocklot}">mockup</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>

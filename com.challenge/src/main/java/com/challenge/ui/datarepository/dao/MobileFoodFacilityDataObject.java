@@ -86,5 +86,17 @@ public class MobileFoodFacilityDataObject {
 		return this.facilityType;
 	}
 	
+	public String getApplicant() {
+		return this.applicant;
+	}
+	
+	public String getAddress() {
+		return this.address;
+	}
+	
+	public String getBlocklot() {
+		return this.blocklot;
+	}
+	
 	/* TODO add setter and getter */
 }

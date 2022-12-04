@@ -16,11 +16,10 @@
 
 package com.challenge.ui;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-
-import com.challenge.ui.datarepository.service.impl.URLAccessDataRepository;
 
 /**
  * @author Forrest Dai
@@ -31,9 +30,7 @@ import com.challenge.ui.datarepository.service.impl.URLAccessDataRepository;
 public class WebUiApplication {
 
 	public static void main(String[] args) throws Exception {
-		// TODO remove
-		System.out.println("====> start");
-		new URLAccessDataRepository().getData();
+		SpringApplication.run(WebUiApplication.class, args);
 	}
-
 }
+

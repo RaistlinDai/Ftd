@@ -13,14 +13,21 @@
 
 package com.challenge.ui.mvc;
 
+import java.util.ArrayList;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.challenge.ui.datarepository.dao.MobileFoodFacilityDataObject;
+import com.challenge.ui.datarepository.dao.MobileFoodFacilityFilterDataObject;
 import com.challenge.ui.service.impl.MobileFoodFacilityServiceImpl;
 
 /**
@@ -38,9 +45,21 @@ public class MobileFoodFacilityController {
 		this.mobileFoodFacilityServiceImpl = mobileFoodFacilityServiceImpl;
 	}
 
-	@RequestMapping(value = "/api/getList", method = RequestMethod.GET)
-	public ModelAndView getList(@RequestParam("facilityType") String facilityType) {
-		Iterable<MobileFoodFacilityDataObject> facilities = this.mobileFoodFacilityServiceImpl.getMobileFoodFacilityByFacilityType(facilityType);
+	@RequestMapping
+	public ModelAndView viewList(Model model) {
+		Iterable<MobileFoodFacilityDataObject> facilities = new ArrayList<MobileFoodFacilityDataObject>();
+	    model.addAttribute("filter", new MobileFoodFacilityFilterDataObject()); 
+		return new ModelAndView("facilities/list", "facilities", facilities);
+	}
+	
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView getList(Model model, @Valid MobileFoodFacilityFilterDataObject filter, BindingResult result, RedirectAttributes redirect) {
+		if (result.hasErrors()) {
+			return new ModelAndView("facilities/list", "formErrors", result.getAllErrors());
+		}
+		
+		Iterable<MobileFoodFacilityDataObject> facilities = this.mobileFoodFacilityServiceImpl.getMobileFoodFacilityByFacilityType(filter.getFacilityType());
+	    model.addAttribute("filter", filter); 
 		return new ModelAndView("facilities/list", "facilities", facilities);
 	}
 
