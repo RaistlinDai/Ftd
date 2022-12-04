@@ -26,6 +26,18 @@ public class URLAccessDataRepository implements IDataAccessable {
 	
 	private static final String HTTP_URL = "https://data.sfgov.org/api/id/rqzj-sfat.json";
 	
+	private static URLAccessDataRepository singletonObj;
+	
+	private URLAccessDataRepository() {
+	}
+	
+	public static URLAccessDataRepository getInstance() {
+		if (singletonObj == null) {
+			singletonObj = new URLAccessDataRepository();
+		}
+		return singletonObj;
+	}
+	
 	@Override
 	public List<MobileFoodFacilityDataObject> getData() {
 			
@@ -38,21 +50,6 @@ public class URLAccessDataRepository implements IDataAccessable {
 			con = (HttpURLConnection)url.openConnection();
 			con.setRequestMethod("GET");
 				
-			// Build parameters
-//			StringBuilder param = new StringBuilder();
-//			if (!StringUtils.isEmpty(queryParam)) {
-//				param.append(URLEncoder.encode("query", "UTF-8"));
-//				param.append("=");
-//				param.append(URLEncoder.encode(queryParam, "UTF-8"));
-//			}
-//			String sst = param.toString().replace("+", "");
-//			logger.info("Parameters is: {}", sst);
-//			con.setDoOutput(true);
-//			DataOutputStream out = new DataOutputStream(con.getOutputStream());
-//			out.writeBytes(queryParam);
-//			out.flush();
-//			out.close();
-//			
 			// Get the response code
 			logger.info("Connection {} returns back {}", HTTP_URL, con.getResponseCode());
 			

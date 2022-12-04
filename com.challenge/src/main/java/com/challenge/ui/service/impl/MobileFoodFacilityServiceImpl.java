@@ -5,10 +5,11 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.challenge.ui.datarepository.dao.MobileFoodFacilityDataObject;
-import com.challenge.ui.datarepository.service.impl.URLAccessDataRepository;
+import com.challenge.ui.datarepository.service.impl.URLAccessDataRepositoryProxy;
 
 /**
  * @author Forrest Dai
@@ -17,6 +18,9 @@ import com.challenge.ui.datarepository.service.impl.URLAccessDataRepository;
 public class MobileFoodFacilityServiceImpl {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MobileFoodFacilityServiceImpl.class);
+	
+	@Autowired
+	URLAccessDataRepositoryProxy urlAccessDataRepositoryProxy;
 	
 	/**
 	 * 
@@ -27,8 +31,7 @@ public class MobileFoodFacilityServiceImpl {
 		logger.info("getMobileFoodFacilityByFacilityType invoke");
 		
 		// Retrieve data
-		URLAccessDataRepository dataRep = new URLAccessDataRepository();
-		List<MobileFoodFacilityDataObject> fList = dataRep.getData();
+		List<MobileFoodFacilityDataObject> fList = urlAccessDataRepositoryProxy.getData();
 		assert(facilityType != null);
 		assert(fList != null);
 		fList = fList.stream().filter(row -> facilityType.equalsIgnoreCase(row.getFacilityType())).
