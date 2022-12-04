@@ -1,5 +1,5 @@
 # User Story Description
-As a client user, I want to retrieve a set of food truccks from the San Francisco's food truck dataset.
+As a client user, I want to retrieve a set of food trucks (by facility type) from the San Francisco's food truck dataset.
 
 # Technical Design
 Data Repository layer
