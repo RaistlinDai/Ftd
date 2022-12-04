@@ -50,7 +50,7 @@ public class MobileFoodFacilityController {
 
 	@RequestMapping
 	public ModelAndView viewList(Model model) {
-		logger.info("viewList invoke");
+		logger.info("MobileFoodFacilityController。viewList invoke");
 		
 		Iterable<MobileFoodFacilityDataObject> facilities = new ArrayList<MobileFoodFacilityDataObject>();
 	    model.addAttribute("filter", new MobileFoodFacilityFilterDataObject()); 
@@ -59,7 +59,7 @@ public class MobileFoodFacilityController {
 	
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView getList(Model model, @Valid MobileFoodFacilityFilterDataObject filter, BindingResult result, RedirectAttributes redirect) {
-		logger.info("getList invoke");
+		logger.info("MobileFoodFacilityController。getList invoke");
 		
 		if (result.hasErrors()) {
 			return new ModelAndView("facilities/list", "formErrors", result.getAllErrors());

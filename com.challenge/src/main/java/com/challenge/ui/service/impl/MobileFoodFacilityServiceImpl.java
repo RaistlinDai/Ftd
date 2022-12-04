@@ -28,7 +28,7 @@ public class MobileFoodFacilityServiceImpl {
 	 * @return
 	 */
 	public Iterable<MobileFoodFacilityDataObject> getMobileFoodFacilityByFacilityType(String facilityType) {
-		logger.info("getMobileFoodFacilityByFacilityType invoke");
+		logger.info("MobileFoodFacilityServiceImpl。getMobileFoodFacilityByFacilityType invoke");
 		
 		// Retrieve data
 		List<MobileFoodFacilityDataObject> fList = urlAccessDataRepositoryProxy.getData();

@@ -26,7 +26,7 @@ public class URLAccessDataRepositoryProxy implements IDataAccessable {
 	
 	private URLAccessDataRepository urlAccessDataRepository;
 	
-	private final String KEY_URL_DATASOURCE = "URL";
+	private final String KEY_URL_DATASOURCE = "URL_DATASOURCE";
 	private ConcurrentHashMap<String, List<MobileFoodFacilityDataObject>> urlDataCache = 
 			new ConcurrentHashMap<String, List<MobileFoodFacilityDataObject>>(256);
 	
@@ -39,7 +39,7 @@ public class URLAccessDataRepositoryProxy implements IDataAccessable {
 	@Override
 	public List<MobileFoodFacilityDataObject> getData() {
 
-		logger.info("proxy.getData invoke");
+		logger.info("URLAccessDataRepositoryProxy.getData invoke");
 		
 		if (urlAccessDataRepository == null)
 			urlAccessDataRepository = URLAccessDataRepository.getInstance();
@@ -58,14 +58,14 @@ public class URLAccessDataRepositoryProxy implements IDataAccessable {
             if (executor != null) {
                 return;
             }
-            logger.info("URLAccessDataRepositoryProxy.runCacheRefresher: Startup cache");
+            logger.debug("URLAccessDataRepositoryProxy.runCacheRefresher: Startup cache");
             // Initialize cache
             urlDataCache.put(KEY_URL_DATASOURCE, urlAccessDataRepository.getData());
             // Get instance of the scheduled thread pool
             executor = new ScheduledThreadPoolExecutor(1, r -> new Thread(r, THREAD_URL_CACHE_NAME));
             // Schedule refresher
             refreshFuture = executor.scheduleAtFixedRate(() -> {
-            	logger.info("URLAccessDataRepositoryProxy.runCacheRefresher: Refresh cache");
+            	logger.debug("URLAccessDataRepositoryProxy.runCacheRefresher: Refresh cache");
             	// Refresh cache
                 urlDataCache.put(KEY_URL_DATASOURCE, urlAccessDataRepository.getData());
             }, THREAD_URL_CACHE_REFRESH_INTERVAL, THREAD_URL_CACHE_REFRESH_INTERVAL, TimeUnit.SECONDS);
@@ -74,7 +74,7 @@ public class URLAccessDataRepositoryProxy implements IDataAccessable {
 
     @PreDestroy
     public void shutdownCache(){
-        logger.info("URLAccessDataRepositoryProxy.runCacheRefresher: Close cache");
+        logger.info("URLAccessDataRepositoryProxy.shutdownCache invoke");
         
         if (executor != null && !executor.isShutdown()) {
             executor.shutdown();

@@ -41,7 +41,7 @@ public class URLAccessDataRepository implements IDataAccessable {
 	@Override
 	public List<MobileFoodFacilityDataObject> getData() {
 			
-		logger.info("getData invoke");
+		logger.info("URLAccessDataRepository.getData invoke");
 		List<MobileFoodFacilityDataObject> listFacility = new ArrayList<MobileFoodFacilityDataObject> ();
 		HttpURLConnection con = null;
 		
@@ -51,7 +51,7 @@ public class URLAccessDataRepository implements IDataAccessable {
 			con.setRequestMethod("GET");
 				
 			// Get the response code
-			logger.info("Connection {} returns back {}", HTTP_URL, con.getResponseCode());
+			logger.debug("URLAccessDataRepository.getData: Connection {} returns back {}", HTTP_URL, con.getResponseCode());
 			
 			// Read the response body
 			BufferedReader br = new BufferedReader(new InputStreamReader((con.getInputStream())));
@@ -61,8 +61,6 @@ public class URLAccessDataRepository implements IDataAccessable {
 			  sb.append(output);
 			}
 			br.close();
-
-			logger.info("Connection response");
 
 			// Parse json to list
 			ObjectMapper mapper = new ObjectMapper();
@@ -80,7 +78,7 @@ public class URLAccessDataRepository implements IDataAccessable {
 			// Close the connection
 			if (con != null)
 				con.disconnect();
-			logger.info("getData exit");
+			logger.info("URLAccessDataRepository.getData exit");
 		}
 			
 		return listFacility;
