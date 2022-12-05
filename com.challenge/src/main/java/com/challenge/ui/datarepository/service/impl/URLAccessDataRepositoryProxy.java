@@ -54,7 +54,7 @@ public class URLAccessDataRepositoryProxy implements IDataAccessable {
         if (executor != null) {
             return;
         }
-        synchronized (urlDataCache) {
+        synchronized (this) {
             if (executor != null) {
                 return;
             }

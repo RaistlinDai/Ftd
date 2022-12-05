@@ -25,3 +25,5 @@ MVC
 3. Use Guava to replace the manual cache in URLDataRepositoryProxy
 4. Import lombok package to reduce the Java code
 5. Refine code, use private methods to reduce code complexity
+6. Extended test cases, such as special characters, performance tests, etc. Choose some auxiliary tools, such as JMeter and Postman.
+7. As a mature production, automation testscript is mandatory in future. Consider using Selenium. 
