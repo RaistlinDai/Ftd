@@ -6,3 +6,4 @@ com.challenge/target
 com.challenge/.classpath
 com.challenge/.project
 *.class
+/.metadata/
